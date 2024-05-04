@@ -5,7 +5,7 @@ on:
     push:
       paths:
     #-	‘mappen klonned med repo depos in terraform/**’ 
-      - 'C:/Users/vboxuser/terraform-infrastructure-as-code/**'
+      - 'Module8/**'
    # workflow dispatch allows the workflow to be runed manually from actions tab
     Workflow_dispatch:
     Jobs:
@@ -19,7 +19,7 @@ on:
     ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
     ARM_SUBSISCRIBTION_ID: ${{secrets.AZURE_ SUBSISCRIBTION _ID}} 
     ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
-    WORKING_DIR: .C:/Users/vboxuser/terraform-infrastructure-as-code/module8
+    WORKING_DIR: .module8
 #STEPS REPRESENT A SEQUENCE OF TASKS THAT WILL BE EXECUTED AS PART OF THE JOBB
 -STEPS:
     #checks-out your repository under $github-workspace, so your job can access it
@@ -31,7 +31,6 @@ id: init
 run: terraform init 	
 WORKING_DIR: ${{ env.WORKING_DIR }} 
 
--uses: actions/checkout@module8GithubActions
  -name: ‘Terraform plan’
    id: plan
   run: terraform plan 	
