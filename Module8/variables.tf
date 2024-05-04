@@ -28,7 +28,7 @@ variable "blobname" {
 variable "sa" {
   type        = string
   description = "storage account navn"
-  default     =  "sa7web7we7"
+  default     =  "sa7web7we8"
 
 
 }
@@ -36,7 +36,7 @@ variable "sa" {
 variable "source_content"{
      type        = string
   description = "storage account navn"
-  default     =  "first web side on github actions 4"
+  default     =  "first web side on github actions 7"
 
 
 
