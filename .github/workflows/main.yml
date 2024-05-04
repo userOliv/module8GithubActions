@@ -21,9 +21,9 @@ on:
     ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
     WORKING_DIR: .C:/Users/vboxuser/terraform-infrastructure-as-code/module8
 #STEPS REPRESENT A SEQUENCE OF TASKS THAT WILL BE EXECUTED AS PART OF THE JOBB
-STEPS:
+    STEPS:
     #checks-out your repository under $github-workspace, so your job can access it
- -uses: actions/checkout@v3
+   -uses: actions/checkout@userOliv
     #Runs a single command using the runners shell
 -name: ‘Terraform init’
 id: init
