@@ -44,7 +44,7 @@ variable "source_content"{
 
 variable "index_document"{
      type        = string
-  description = "storage account navn"
+  description = "storage account navn1"
   default     =  "index.php"
 
 
