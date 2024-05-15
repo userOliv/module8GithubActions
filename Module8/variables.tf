@@ -36,7 +36,7 @@ variable "sa" {
 variable "source_content"{
      type        = string
   description = "storage account navn"
-  default     =  "first web side on github actions 12"
+  default     =  "first web side on github actions 13"
 
 
 
