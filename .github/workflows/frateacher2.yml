@@ -1,7 +1,7 @@
 
 # This is a basic workflow to help you get started with Actions
 
-name: Deploy infrastructure
+name: Deploy based on teacher
 
 # Controls when the workflow will run
 on:
@@ -9,7 +9,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'module8'
+      - './Module8'
       
 jobs:
   terraform:
@@ -21,7 +21,7 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      WORKING_DIR: module8
+      WORKING_DIR: ./Module8
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

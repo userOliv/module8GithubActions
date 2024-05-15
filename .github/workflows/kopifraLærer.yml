@@ -9,7 +9,7 @@ on:
     branches:
       - 'main'
     paths:
-      - 'module8'
+      - 'module8GithubActions/**'
       
 jobs:
   terraform:
@@ -21,11 +21,11 @@ jobs:
       ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
       ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
-      WORKING_DIR: module8
+      WORKING_DIR: ./module8GithubActions/**
       
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - uses: actions/checkout@userOliv
+      - uses: actions/checkout@v4
 
       # Initialize Terraform
       - name: Terraform init
