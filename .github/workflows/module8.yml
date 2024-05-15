@@ -1,43 +1,46 @@
-#workflow navn:
-name: init
+
+# This is a basic workflow to help you get started with Actions
+
+name: Deploy infrastructure
+
+# Controls when the workflow will run
 on:
- #triggers the workflow on push or pull request events in the spesicified path( or in main branch)
-    push:
-      paths:
-    #-	‘mappen klonned med repo depos in terraform/**’ 
-      - 'Module8/**'
-   # workflow dispatch allows the workflow to be runed manually from actions tab
-    Workflow_dispatch:
-    Jobs:
-#workflow with a single job called “testmodule8”
-    Resourcegroups:
-#the type of runner( operative system) the job will run on
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'module8'
+      
+jobs:
+  terraform:
     runs-on: ubuntu-latest
-    -name: ‘init’
+    
+    name: 'deploy infrastructure'
     env:
-    ARM_CLIENT_ID: ${{secrets.AZURE_CLIENT_ID}}
-    ARM_CLIENT_SECRET: ${{secrets.AZURE_CLIENT_SECRET}}
-    ARM_SUBSISCRIBTION_ID: ${{secrets.AZURE_ SUBSISCRIBTION _ID}} 
-    ARM_TENANT_ID: ${{secrets.AZURE_TENANT_ID}}
-    WORKING_DIR: .module8
-#STEPS REPRESENT A SEQUENCE OF TASKS THAT WILL BE EXECUTED AS PART OF THE JOBB
--STEPS:
-    #checks-out your repository under $github-workspace, so your job can access it
-  -uses: actions/checkout@userOliv
+      ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+      WORKING_DIR: module8
+      
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@userOliv
 
-    #Runs a single command using the runners shell
--name: ‘Terraform init’
-id: init
-run: terraform init 	
-WORKING_DIR: ${{ env.WORKING_DIR }} 
-
- -name: ‘Terraform plan’
-   id: plan
-  run: terraform plan 	
-    working-directory: ${{ env.WORKING_DIR }}
-   
-
- # -name: ‘Terraform apply’
- #  id: apply
- # run: terraform apply -auto-approve	
- # working-directory: ${{env.WORKING_DIR}}
+      # Initialize Terraform
+      - name: Terraform init
+        id: init
+        run: terraform init
+        working-directory: ${{ env.WORKING_DIR }}
+      
+      # Generate a plan for Terraform changes
+      - name: Terraform plan
+        id: plan
+        run: terraform plan
+        working-directory: ${{ env.WORKING_DIR }}
+      
+      # Apply Terraform changes
+      - name: Terraform apply
+        id: apply
+        run: terraform apply -auto-approve
+        working-directory: ${{ env.WORKING_DIR }}
